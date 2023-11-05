@@ -13,6 +13,40 @@ Devid Campagnolo*, Elena Camuffo*, Umberto Michieli, Paolo Borin, Simone Milani 
 
 Digital Reconstruction through Building Information Models (BIM) is a valuable methodology for documenting and analyzing existing buildings. Its pipeline starts with geometric acquisition. (e.g., via photogrammetry or laser scanning) for accurate point cloud collection. However, the acquired data are noisy and unstructured, and the creation of a semantically-meaningful BIM representation requires a huge computational effort, as well as expensive and time-consuming human annotations. In this paper, we propose a fully automated scan-to-BIM pipeline. The approach relies on: (i) our dataset (HePIC), acquired from two large buildings and annotated at a point-wise semantic level based on existent BIM models; (ii) a novel ad hoc deep network (BIM-Net++) for semantic segmentation, whose output is then processed to extract instance information necessary to recreate BIM objects; (iii) novel model pretraining and class re-weighting to eliminate the need for a large amount of labeled data and human intervention.
 
+### 👩‍🍳 Recipe to use our code
+
+1) Download **HePIC**🏛️ dataset from [here](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo).
+
+2) Set up the environment with:
+ ```
+conda env create -f scan2bim.yml
+ ```
+
+ 3) Train 🚀**BIM-Net++** with **HePIC**🏛️:
+  ```
+python train_pcs.py --loss mixed --dset_path [folder/of/your/dataset]
+ ```
+
+We include also training on:
+- **HePIC with other models**: SegCloud, Cylinder3D, RandLA-Net, PVCNN.
+- **BIM-Net with other datasets**: Arch, S3DIS.
+
+
+### 🔍 Evaluation
+You can download our pretrained models from [here]().
+Results are reported here below.
+
+| Model |    Dataset    |  PA |  PP | mIoU | Pretrained Weights |
+|-------|:-------------:|-----:|-----:|-----:|---:|
+SegCloud | **HePIC**🏛️ | 17.6 | 24.7| 13.2 |
+Cylinder3D | **HePIC**🏛️ | 21.0 | 23.2 | 14.2 |
+RandLA-Net | **HePIC**🏛️ |  35.6 | 56.2 | 28.8 |
+PVCNN | **HePIC**🏛️ | 43.3 | 48.1 | 34.9 |
+**BIM-Net** |  Arch | 26.0 | 39.8 | 18.4 |
+**BIM-Net** |  S3DIS | 71.7 | 76.5 | 59.5 |
+**BIM-Net** | **HePIC**🏛️ | 47.1 | 58.9 | 40.6 |
+🚀**BIM-Net++** | **HePIC**🏛️ | 59.1 | 53.0 | 43.7 |
+
 ### Citation
 If you find our work useful for your research, please consider citing:
 
