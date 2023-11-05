@@ -1,0 +1,39 @@
+import torch
+from torch import nn
+from torch.nn import functional as F
+
+from model.cylinder3d.segmentator_3d_asymm_spconv import Asymm_3d_spconv
+from model.cylinder3d.cylinder_fea_generator import cylinder_fea
+
+class Cylinder3D(nn.Module):
+    name = "Cylinder3D"
+    
+    def __init__(self, batch_size=1, num_classes=20):
+        super(Cylinder3D, self).__init__()
+        
+        self.batch_size = batch_size
+        self.output_shape = [480, 360, 32] # model_config['output_shape']
+        self.num_class = num_classes
+        self.num_input_features = 16 #model_config['num_input_features']
+        self.use_norm = True #model_config['use_norm']
+        self.init_size = 32 #model_config['init_size']
+        self.fea_dim = 6 #model_config['fea_dim']
+        self.out_fea_dim = 256 #model_config['out_fea_dim']        
+        self.sparse_shape = self.output_shape
+        
+        self.cylinder_3d_generator = cylinder_fea(grid_size=self.output_shape,
+                        fea_dim=self.fea_dim,
+                        out_pt_fea_dim=self.out_fea_dim,
+                        fea_compre=self.num_input_features)
+            
+        self.cylinder_3d_spconv_seg = Asymm_3d_spconv(output_shape=self.output_shape,
+                        use_norm=self.use_norm,
+                        num_input_features=self.num_input_features,
+                        init_size=self.init_size,
+                        nclasses=self.num_class)
+                     
+
+    def forward(self, train_pt_fea_ten, train_vox_ten):
+        coords, features_3d = self.cylinder_3d_generator(train_pt_fea_ten, train_vox_ten)
+        spatial_features = self.cylinder_3d_spconv_seg(features_3d, coords, self.batch_size)
+        return spatial_features

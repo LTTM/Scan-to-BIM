@@ -1,0 +1,15 @@
+Training/10_SStefano_portico_1.txt
+Training/6_SMV_chapel_2to4.txt
+Training/2_TR_church.txt
+Training/3_VAL_room.txt
+Training/13_KAS_pavillion_2.txt
+Training/1_TR_cloister.txt
+Training/7_SMV_chapel_24.txt
+Training/5_SMV_chapel_1.txt
+Training/9_SMV_chapel_10.txt
+Training/8_SMV_chapel_28.txt
+Training/4_CA_church.txt
+Training/14_TRE_square.txt
+Training/11_SStefano_portico_2.txt
+Training/15_OTT_church.txt
+Training/12_KAS_pavillion_1.txt

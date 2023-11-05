@@ -1,0 +1,13 @@
+1_Eremitani/train/101.txt
+1_Eremitani/train/102.txt
+1_Eremitani/train/103.txt
+1_Eremitani/train/104.txt
+1_Eremitani/train/105.txt
+1_Eremitani/train/106.txt
+1_Eremitani/train/107.txt
+1_Eremitani/train/108.txt
+1_Eremitani/train/109.txt
+1_Eremitani/train/110.txt
+1_Eremitani/train/121.txt
+1_Eremitani/train/122.txt
+1_Eremitani/train/123.txt

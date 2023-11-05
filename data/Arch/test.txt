@@ -1,0 +1,2 @@
+Test/A_SMG_portico.txt
+Test/B_SMV_chapel_27to35.txt
