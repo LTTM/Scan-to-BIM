@@ -80,7 +80,7 @@ class Trainer():
             
         # Load dataset
         dataset = PCSDataset
-        dset = voxel_dataset(dataset(root_path="../PCSproject/Nuvole_di_punti", cube_edge=args.cube_edge),
+        dset = voxel_dataset(dataset(root_path=args.dset_path, cube_edge=args.cube_edge),
                              grid_size=model.output_shape)
         dloader = DataLoader(dset,
                              batch_size=args.batch_size,
@@ -89,7 +89,7 @@ class Trainer():
                              collate_fn=my_collate,
                              drop_last=True)
 
-        vset = voxel_dataset(dataset(root_path="../PCSproject/Nuvole_di_punti", cube_edge=args.val_cube_edge,
+        vset = voxel_dataset(dataset(root_path=args.dset_path, cube_edge=args.val_cube_edge,
                                      augment=False,
                                      split='val'), grid_size=model.output_shape)
         vloader = DataLoader(vset,
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=25000, help='number of epochs to run')
     parser.add_argument("--batch_size", type=int, default=1, help='batch_size')
     parser.add_argument("--cube_edge", type=int, default=24, help='granularity of voxelization train')
-    parser.add_argument("--val_cube_edge", type=int, default=256, default='granularity of voxelization val')
+    parser.add_argument("--val_cube_edge", type=int, default=256, help='granularity of voxelization val')
     parser.add_argument("--num_classes", type=int, default=8, help='number of classes to consider')
     parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/PCSproject/Nuvole_di_punti", help='dataset path')
     parser.add_argument("--test_name", type=str, help='optional test name')

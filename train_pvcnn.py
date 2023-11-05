@@ -58,7 +58,7 @@ if __name__ == '__main__':
     parser.add_argument("--epochs", type=int, default=5000, help='number of epochs to run')
     parser.add_argument("--batch_size", type=int, default=8, help='batch_size')
     parser.add_argument("--cube_edge", type=int, default=96, help='granularity of voxelization train')
-    parser.add_argument("--val_cube_edge", type=int, default=96, default='granularity of voxelization val')
+    parser.add_argument("--val_cube_edge", type=int, default=96, help='granularity of voxelization val')
     parser.add_argument("--num_classes", type=int, default=8, help='number of classes to consider')
     parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/PCSproject/Nuvole_di_punti", help='dataset path')
     parser.add_argument("--test_name", type=str, help='optional test name')
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     
 
     # to visualize point cloud
-    pts = 2*torch.from_numpy(np.indices((args.val_cube_edge, args.val_cube_edge, args.sval_cube_edge))
+    pts = 2*torch.from_numpy(np.indices((args.val_cube_edge, args.val_cube_edge, args.val_cube_edge))
                              .reshape(3, -1).T).unsqueeze(0)/args.cube_edge - 1.
     best_miou = 0
 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
 
             optim.step()
             miou = metrics.percent_mIoU()
-            pbar.set_description("Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, epochs, l.item(), miou))
+            pbar.set_description("Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, l.item(), miou))
             
             writer.add_scalar('lr', lr, step)
             writer.add_scalar('loss', l.item(), step)
