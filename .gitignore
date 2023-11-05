@@ -1,0 +1,17 @@
+.png
+.jpg
+.jpeg
+.bmp
+
+.pt
+.npy
+.txt
+.err
+.out
+
+out
+*pred
+log*
+
+err
+__pyacache__
