@@ -120,7 +120,7 @@ class S3DISDataset(Dataset):
         geom = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.float32)
         geom[tuple(xyz.T)] = 1
 
-        labs = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.long)
+        labs = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.int64)
         labs[tuple(xyz.T)] = lab
 
         return torch.from_numpy(geom).unsqueeze(0), torch.from_numpy(labs)

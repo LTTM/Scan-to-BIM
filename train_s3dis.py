@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     
-    logdir = "log/train_s3dis" + args.teest_name
+    logdir = "log/train_s3dis" + args.test_name
     rmtree(logdir, ignore_errors=True)
     writer = SummaryWriter(logdir, flush_secs=.5)
 
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     dset = dataset(root_path=args.dset_path,
                    cube_edge=args.cube_edge)
     dloader = DataLoader(dset,
-                         batch_size=args.sbatch_size,
+                         batch_size=args.batch_size,
                          shuffle=True,
                          num_workers=4,
                          drop_last=True)
@@ -125,7 +125,7 @@ if __name__ == '__main__':
             if miou>best_miou:
                 best_miou = miou
                 torch.save(model.state_dict(), logdir+"/val_best.pth")
-            log_pcs(writer, pts, o, y)
+            #log_pcs(writer, pts, o, y)
             metrics = Metrics(dset.cnames[1:], device=device)
         
         pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, 0., 0.))

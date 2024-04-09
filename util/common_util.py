@@ -2,7 +2,7 @@ import os
 
 import numpy as np
 import torch
-
+import wandb
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
@@ -82,7 +82,6 @@ def log_pcs(writer, dset, pts, o, y):
         writer.add_mesh("labels", vertices=pts[:, my], colors=np.expand_dims(cy[my], 0))#, global_step=e)
         writer.add_mesh("preds", vertices=pts[:, my], colors=np.expand_dims(cp[my], 0))#, global_step=e)
 
-import wandb
 
 def log_pcs_wandb(writer, dset, o, y):
     my_pred = o.detach().cpu().numpy()
