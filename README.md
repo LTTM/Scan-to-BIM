@@ -25,8 +25,6 @@ Digital Reconstruction through Building Information Models (BIM) is a valuable m
 2) Set up the environment with:
  ```
 conda env create -f scan2bim.yml
-
-sh requirements.sh
  ```
 
  3) Train 🚀**BIM-Net++** with **HePIC**🏛️:
