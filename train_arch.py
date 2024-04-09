@@ -129,7 +129,7 @@ if __name__ == '__main__':
                 if miou>best_miou:
                     best_miou = miou
                     torch.save(model.state_dict(), logdir+"/val_best.pth")
-                log_pcs(writer, dset, pts, o, y)
+                # log_pcs(writer, dset, pts, o, y)
             metrics = Metrics(dset.cnames[1:], device=device)
         
         pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, 0., 0.))
