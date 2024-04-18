@@ -20,7 +20,8 @@ Digital Reconstruction through Building Information Models (BIM) is a valuable m
 
 ### 👩‍🍳 Recipe to use our code
 
-1) Download **HePIC**🏛️ dataset from [here](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo).
+1) Download **HePIC**🏛️ dataset from [here](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo) and split the data as in `data/HePIC`.
+
 
 2) Set up the environment with:
  ```

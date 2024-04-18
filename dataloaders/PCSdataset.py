@@ -8,7 +8,7 @@ from os import path
 
 class PCSDataset(Dataset):
     def __init__(self,
-                 root_path="../../PCSproject/Nuvole_di_punti",
+                 root_path="/home/elena/Downloads/HePIC/HePIC", #"../../PCSproject/Nuvole_di_punti",
                  splits_path="data/HePIC",
                  fsl=None,
                  split="train",
@@ -139,7 +139,7 @@ class PCSDataset(Dataset):
 
     def clean_line(self, l):
         # -16.385012495881597,29.048298990139457,237.51045999999994,Walls,051771850
-        x, y, z, l, _ = l.strip().split(',')
+        x, y, z, l, _ = l.strip().split(',')[:5]
         return (float(x), float(y), float(z)), self.idmap[l]
 
     def __getitem__(self, item):
@@ -205,7 +205,7 @@ class PCSDataset(Dataset):
         geom = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.float32)
         geom[tuple(xyz.T)] = 1
 
-        labs = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.long)
+        labs = np.zeros((self.cube_edge, self.cube_edge, self.cube_edge), dtype=np.int64)
         labs[tuple(xyz.T)] = lab
 
         return torch.from_numpy(geom).unsqueeze(0), torch.from_numpy(labs)
