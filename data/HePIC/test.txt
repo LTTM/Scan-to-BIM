@@ -4,16 +4,12 @@
 2_Castello/test/054.txt
 2_Castello/test/055.txt
 2_Castello/test/056.txt
-2_Castello/test/057.txt
 2_Castello/test/058.txt
 2_Castello/test/059.txt
 2_Castello/test/060.txt
 2_Castello/test/061.txt
-2_Castello/test/062.txt
-2_Castello/test/063.txt
 2_Castello/test/064.txt
 2_Castello/test/065.txt
-2_Castello/test/066.txt
 2_Castello/test/067.txt
 1_Eremitani/test/111.txt
 1_Eremitani/test/112.txt

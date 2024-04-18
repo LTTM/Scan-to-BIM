@@ -4,16 +4,12 @@
 2_Castello/val/054.txt
 2_Castello/val/055.txt
 2_Castello/val/056.txt
-2_Castello/val/057.txt
 2_Castello/val/058.txt
 2_Castello/val/059.txt
 2_Castello/val/060.txt
 2_Castello/val/061.txt
-2_Castello/val/062.txt
-2_Castello/val/063.txt
 2_Castello/val/064.txt
 2_Castello/val/065.txt
-2_Castello/val/066.txt
 2_Castello/val/067.txt
 1_Eremitani/val/111.txt
 1_Eremitani/val/112.txt
