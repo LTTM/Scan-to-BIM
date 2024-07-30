@@ -5,7 +5,7 @@ Devid Campagnolo*, Elena Camuffo*, Umberto Michieli, Paolo Borin, Simone Milani 
 [![Static Badge](https://img.shields.io/badge/dataset-brightgreen?style=for-the-badge&labelColor=white)](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo)
 [![Static Badge](https://img.shields.io/badge/paper-lightblue?style=for-the-badge&labelColor=white)](https://ieeexplore.ieee.org/abstract/document/10222064)
 [![Static Badge](https://img.shields.io/badge/presentation-orange?style=for-the-badge&labelColor=white)](https://github.com/LTTM/Scan-to-BIM/files/12861649/Fully-Automated.Scan-to-BIM.via.Point.Cloud.Instance.Segmentation.Base.pdf)
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Our dataset is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Our dataset and codebase are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
 ![image](https://github.com/LTTM/Scan-to-BIM/assets/63043735/d7bec320-4277-494c-8da1-5bfcf3469458)
 
