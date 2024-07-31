@@ -60,8 +60,8 @@ if __name__ == '__main__':
     parser.add_argument("--cube_edge", type=int, default=96, help='granularity of voxelization train')
     parser.add_argument("--val_cube_edge", type=int, default=96, help='granularity of voxelization val')
     parser.add_argument("--num_classes", type=int, default=8, help='number of classes to consider')
-    parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/PCSproject/Nuvole_di_punti", help='dataset path')
-    parser.add_argument("--test_name", type=str, help='optional test name')
+    parser.add_argument("--dset_path", type=str, default="/media/elena/M2 SSD/datasets/HePIC/HePIC", help='dataset path')
+    parser.add_argument("--test_name", type=str, default='test', help='optional test name')
     parser.add_argument("--pretrain", type=str, help='pretrained model path')
     parser.add_argument("--loss", choices=['ce','cwce','ohem','mixed'], default='mixed', type=str, help='which loss to use')
     args = parser.parse_args()
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    logdir = "log/train_pcs" + "_" + args.pretrain + args.test_name
+    logdir = "log/train_pcs" + "_" + args.test_name
     rmtree(logdir, ignore_errors=True)
     writer = SummaryWriter(logdir, flush_secs=.5)
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         torch.cuda.empty_cache()
 
         # Validation every n epochs
-        if e % args.eval_every_n_epochs == 0:
+        if e % eval_every_n_epochs == 0:
             if e>=0:
                 miou, o, y = validate(writer, vset, vloader, e, model, device)
                 if miou>best_miou:
@@ -133,7 +133,7 @@ if __name__ == '__main__':
                 #log_pcs(writer, pts, o, y)
             metrics = Metrics(dset.cnames[1:], device=device)
         
-        pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, epochs, 0., 0.))
+        pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, 0., 0.))
 
         for i, data in enumerate(pbar):
 

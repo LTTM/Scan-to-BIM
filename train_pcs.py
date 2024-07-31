@@ -53,7 +53,7 @@ if __name__ == '__main__':
     parser.add_argument("--cube_edge", type=int, default=64, help='granularity of voxelization train')
     parser.add_argument("--val_cube_edge", type=int, default=64, help='granularity of voxelization val')
     parser.add_argument("--num_classes", type=int, default=8, help='number of classes to consider')
-    parser.add_argument("--dset_path", type=str, default="/home/elena/Downloads/HePIC/HePIC", help='dataset path')
+    parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/datasets/HePIC/HePIC", help='dataset path')
     parser.add_argument("--test_name", type=str, default='test', help='optional test name')
     parser.add_argument("--pretrain", type=str, help='pretrained model path')
     parser.add_argument("--loss", choices=['ce','cwce','ohem','mixed'], default='mixed', type=str, help='which loss to use')

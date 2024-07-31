@@ -56,7 +56,7 @@ class Trainer():
 
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-        logdir = "log/train" + args.pretrain + args.test_name
+        logdir = "log/train" + args.test_name
         rmtree(logdir, ignore_errors=True) #rimuove i files di log vecchi
         writer = SummaryWriter(logdir, flush_secs=.5)
 
@@ -72,13 +72,14 @@ class Trainer():
         model.to(device)
 
         #Load dataset 
-        dset = S3DISDataset(cube_edge=args.cube_edge)
+        dataset = PCSDataset
+        dset = dataset(cube_edge=args.cube_edge)
         dloader = DataLoader(dset,
                              batch_size=args.batch_size,
                              shuffle=True,
                              num_workers=8,
                              drop_last=True)
-        vset = S3DISDataset(cube_edge=args.val_cube_edge,
+        vset = dataset(cube_edge=args.val_cube_edge,
                           augment=False,
                           split='val')
         vloader = DataLoader(vset,
@@ -113,7 +114,7 @@ class Trainer():
                 #log_pcs(writer, dset, pts, o, y)
                 metrics = Metrics(dset.cnames[1:], device=device)
             
-            pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, epochs, 0., 0.))
+            pbar = tqdm(dloader, total=steps_per_epoch, desc="Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, 0., 0.))
             for i, (x, y) in enumerate(pbar):
                 
                 step = i+steps_per_epoch*e
@@ -132,7 +133,7 @@ class Trainer():
 
                 optim.step()
                 miou = metrics.percent_mIoU()
-                pbar.set_description("Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, epochs, l.item(), miou))
+                pbar.set_description("Epoch %d/%d, Loss: %.2f, mIoU: %.2f, Progress"%(e+1, args.epochs, l.item(), miou))
                 
                 writer.add_scalar('lr', lr, step)
                 writer.add_scalar('loss', l.item(), step)
@@ -156,8 +157,8 @@ if __name__ == "__main__":
     parser.add_argument("--cube_edge", type=int, default=24, help='granularity of voxelization train')
     parser.add_argument("--val_cube_edge", type=int, default=256, help='granularity of voxelization val')
     parser.add_argument("--num_classes", type=int, default=8, help='number of classes to consider')
-    parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/PCSproject/Nuvole_di_punti", help='dataset path')
-    parser.add_argument("--test_name", type=str, help='optional test name')
+    parser.add_argument("--dset_path", type=str, default="/media/elena/M2SSD/datasets/HePIC/HePIC", help='dataset path')
+    parser.add_argument("--test_name", type=str, default='test', help='optional test name')
     parser.add_argument("--pretrain", type=str, help='pretrained model path')
     parser.add_argument("--loss", choices=['ce','cwce','ohem','mixed'], default='mixed', type=str, help='which loss to use')
     args = parser.parse_args()

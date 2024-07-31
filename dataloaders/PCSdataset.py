@@ -8,7 +8,7 @@ from os import path
 
 class PCSDataset(Dataset):
     def __init__(self,
-                 root_path="/home/elena/Downloads/HePIC/HePIC", #"../../PCSproject/Nuvole_di_punti",
+                 root_path="/media/elena/M2 SSD/datasets/HePIC/HePIC", #"../../PCSproject/Nuvole_di_punti",
                  splits_path="data/HePIC",
                  fsl=None,
                  split="train",

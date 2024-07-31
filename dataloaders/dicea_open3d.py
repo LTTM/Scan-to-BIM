@@ -5,24 +5,24 @@ from scipy.spatial.transform import Rotation as R
 from open3d._ml3d.datasets.base_dataset import BaseDataset
 from torch.utils.data import Dataset
 
-#from model.randlanet import RandLANet
-from open3d.ml.torch.models import PointTransformer
+from model.randlanet import RandLANet
+#from open3d.ml.torch.models import PointTransformer
 
 class DICEADatasetOpen3D(Dataset):
-    name = "DICEA"
-    with open('/home/elena/Documents/deeplearningproject/Open3D-ML/ml3d/configs/pointtransformer_dicea.yml') as f:
-        cfg = yaml.safe_load(f)
-    splits_path = "data/DICEA"
+    name = "HePIC"
+    #with open('/home/elena/Documents/deeplearningproject/Open3D-ML/ml3d/configs/pointtransformer_dicea.yml') as f:
+    #    cfg = yaml.safe_load(f)
+    splits_path = "data/HePIC"
 
     def __init__(self,
-                name="DICEA",
-                root_path = "data/DICEA",
-                splits_path = "data/DICEA",
+                name="HePIC",
+                root_path = "data/HePIC",
+                splits_path = "data/HePIC",
                 split = "train",
                 num_pts = 122880,
                 augment = True,
                 repeat = 1,
-                model = PointTransformer,
+                model = RandLANet,
                 **kwargs):
                 super().__init__() #name=name)
 
@@ -79,7 +79,7 @@ class DICEADatasetOpen3D(Dataset):
         if self.split == 'train':
             data = model.preprocess(data, self.get_attr(item))
             data = model.transform(data, self.get_attr(item))
-            del data["search_tree"]
+#            del data["search_tree"]
         else:
             model.inference_begin(data)
             data = model.inference_preprocess()
@@ -96,7 +96,7 @@ class DICEADatasetOpen3D(Dataset):
 
     def clean_line(self, l):
         # -16.385012495881597,29.048298990139457,237.51045999999994,Walls,051771850
-        x, y, z, l, _ = l.strip().split(',')
+        x, y, z, l, _ = l.strip().split(',')[:5]
         return (float(x), float(y), float(z)), self.idmap[l]
 
     def getitem(self, item):
