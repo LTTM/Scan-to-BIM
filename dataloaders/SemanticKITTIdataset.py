@@ -237,7 +237,7 @@ class voxel_dataset(Dataset):
         intervals = crop_range / (cur_grid_size - 1)
         if (intervals == 0).any(): print("Zero interval!")
 
-        grid_ind = (np.floor((np.clip(xyz, min_bound, max_bound) - min_bound) / intervals)).astype(np.int)
+        grid_ind = (np.floor((np.clip(xyz, min_bound, max_bound) - min_bound) / intervals)).astype(np.int64)
 
         # process voxel position
         voxel_position = np.zeros(self.grid_size, dtype=np.float32)

@@ -10,9 +10,10 @@ Devid Campagnolo*, Elena Camuffo*, Umberto Michieli, Paolo Borin, Simone Milani 
 ![image](https://github.com/LTTM/Scan-to-BIM/assets/63043735/d7bec320-4277-494c-8da1-5bfcf3469458)
 
 ### 🔥 News
+- **Pretrained models** uploaded [here](https://drive.google.com/drive/folders/1hSW5MRQY10q9-EUXBZU4G-agZNrp_CAG?usp=drive_link)!
+---------------------------------------------------
 - **HePIC**🏛️ dataset uploaded.
 - **BIM-Net** codebase added - 5 models $\times$ 3 datasets.
-- *Pretrained models --> coming soon!*
 
 ### Abstract 
 
@@ -20,7 +21,7 @@ Digital Reconstruction through Building Information Models (BIM) is a valuable m
 
 ### 👩‍🍳 Recipe to use our code
 
-1) Download **HePIC**🏛️ dataset from [here](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo) and split the data as in `data/HePIC`.
+1) Download **HePIC**🏛️ dataset from [here](https://drive.google.com/drive/u/3/folders/1NmRegFS9HQQx7IJ7Klpn8mgWbW6bv9Eo) and split the data as in `data/HePIC` lists. You can do it with the help of the `split_data.py` script.
 
 
 2) Set up the environment with:
@@ -39,19 +40,19 @@ We include also training on:
 
 
 ### 🔍 Evaluation
-You can download our pretrained models from [here]().
+You can download our pretrained models from [here](https://drive.google.com/drive/folders/1hSW5MRQY10q9-EUXBZU4G-agZNrp_CAG?usp=drive_link).
 Results are reported here below.
 
 | Model |    Dataset    |  PA |  PP | mIoU | Pretrained Weights |
 |-------|:-------------:|-----:|-----:|-----:|---:|
-SegCloud | **HePIC**🏛️ | 17.6 | 24.7| 13.2 |
-Cylinder3D | **HePIC**🏛️ | 21.0 | 23.2 | 14.2 |
-RandLA-Net | **HePIC**🏛️ |  35.6 | 56.2 | 28.8 |
-PVCNN | **HePIC**🏛️ | 43.3 | 48.1 | 34.9 |
-**BIM-Net** |  Arch | 26.0 | 39.8 | 18.4 |
-**BIM-Net** |  S3DIS | 71.7 | 76.5 | 59.5 |
-**BIM-Net** | **HePIC**🏛️ | 47.1 | 58.9 | 40.6 |
-🚀**BIM-Net++** | **HePIC**🏛️ | 59.1 | 53.0 | 43.7 |
+SegCloud | **HePIC**🏛️ | 17.6 | 24.7| 13.2 | [SegCloud_HePIC](https://drive.google.com/file/d/1h8sVTNfqvJpqbK_0KDd0VO2ynH3x-PCE/view?usp=drive_link) |
+Cylinder3D | **HePIC**🏛️ | 21.0 | 23.2 | 14.2 |[Cylinder3D_HePIC](https://drive.google.com/file/d/13C2JullsZXZII12yy3E-BCmla1i7dJ66/view?usp=drive_link) |
+RandLA-Net | **HePIC**🏛️ |  35.6 | 56.2 | 28.8 | [RandLA-Net_HePIC](https://drive.google.com/file/d/1GWXq0iyre78iCZHaANYHJ_2FrtH8Oyvc/view?usp=drive_link) |
+PVCNN | **HePIC**🏛️ | 43.3 | 48.1 | 34.9 | [PVCNN_HePIC](https://drive.google.com/file/d/1r0HJCesPu2cEjI7A9hwoWtrLySooEFKt/view?usp=drive_link) |
+**BIM-Net** |  Arch | 26.0 | 39.8 | 18.4 |[BIM-Net_Arch](https://drive.google.com/file/d/1-6c0ABWiqFbLTfW3Hbsm7aoPghvW31f1/view?usp=drive_link) |
+**BIM-Net** |  S3DIS | 71.7 | 76.5 | 59.5 |[BIM-Net_S3DIS](https://drive.google.com/file/d/1DdKMAp8NJSpqRTiTiMAbiogeVEimiJYE/view?usp=drive_link) |
+**BIM-Net** | **HePIC**🏛️ | 47.1 | 58.9 | 40.6 |[BIM-Net_HePIC](https://drive.google.com/file/d/1ouWo1lo0fEeskHSs4bnqhMUVXdNJUZUa/view?usp=drive_link) |
+🚀**BIM-Net++** | **HePIC**🏛️ | 59.1 | 53.0 | 43.7 | [BIM-Net++_HePIC](https://drive.google.com/file/d/1FVFXnzEGgTUGmhOr_M7fO_hXLyg_pltm/view?usp=drive_link)
 
 ### Citation
 If you find our work useful for your research, please consider citing:
@@ -66,3 +67,6 @@ If you find our work useful for your research, please consider citing:
   doi={10.1109/ICIP49359.2023.10222064}
   }
  ```
+
+ <!-- ⚠️ -->
+*NOTE: Pretrained weights have been obtained retraining the models and datasets with up-to-date packages within the environment. Results may slightly differ from the ones reported in the paper.*
