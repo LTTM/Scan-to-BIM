@@ -76,10 +76,10 @@ class DICEADatasetOpen3D(Dataset):
         model = self.model(num_classes=len(self.idmap))
         data = self.getitem(item)
         data = {"point": data[0], "feat": data[0], "label": data[1]}
-        if self.split == 'train':
+        if not self.split == 'test':
             data = model.preprocess(data, self.get_attr(item))
             data = model.transform(data, self.get_attr(item))
-#            del data["search_tree"]
+            # del data["search_tree"]
         else:
             model.inference_begin(data)
             data = model.inference_preprocess()
@@ -137,7 +137,7 @@ class DICEADatasetOpen3D(Dataset):
         points, features, labels = xyz, xyz, lab
 
         return torch.from_numpy(xyz), torch.from_numpy(lab)
-        # return torch.from_numpy(xyz).transpose(0,1).unsqueeze(-1), torch.from_numpy(lab).unsqueeze(-1)
+        #return torch.from_numpy(xyz).transpose(0,1).unsqueeze(-1), torch.from_numpy(lab).unsqueeze(-1)
 
     def to_plottable(self, x):
         return x.transpose(0, 2)
