@@ -11,7 +11,6 @@ Devid Campagnolo*, Elena Camuffo*, Umberto Michieli, Paolo Borin, Simone Milani 
 
 ### 🔥 News
 - **Pretrained models** uploaded [here](https://drive.google.com/drive/folders/1hSW5MRQY10q9-EUXBZU4G-agZNrp_CAG?usp=drive_link)!
----------------------------------------------------
 - **HePIC**🏛️ dataset uploaded.
 - **BIM-Net** codebase added - 5 models $\times$ 3 datasets.
 
